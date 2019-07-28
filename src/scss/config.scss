@@ -1,0 +1,13 @@
+// vars
+
+$transition: all .3s ease;
+
+// mixins
+
+@mixin Flex($justify-content: flex-start, $align-items: flex-start, $flex-direction: row, $flex-wrap: nowrap) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
+    flex-wrap: $flex-wrap;
+}
