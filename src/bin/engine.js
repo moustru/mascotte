@@ -17,11 +17,13 @@ axios.interceptors.request.use(settings => {
 
 const postData = cfg.serialize({});
 
-const BTCCell = document.querySelector('.main-btc-currency');
-const walletCell = document.querySelector('.main-wallet-count');
+const buyCell = document.querySelector('.main-buy-count');
+const walletCell = document.querySelector('.header-wallet-count');
+const sellCell = document.querySelector('.main-sell-count');
 
 window.onload = () => {
     cfg.init();
     walletCell.innerHTML = cfg.config.wallet;
-    action.getCurrencyInfo(BTCCell);
+
+    //setInterval(() => { action.getCurrencyInfo(buyCell, sellCell)}, 500);
 }

@@ -1,14 +1,83 @@
 @import 'config.scss';
 
 * {
+    color: #fff;
+    font-family: 'PressStart2P-Regular', sans-serif;
     box-sizing: border-box;
 }
 
 html, body {
     width: 100%;
     height: 100%;
+    width: 90%;
+    margin: auto;
+    background-color: #23242b;
+}
+
+h1, h2, h3, h4, h5, h6, a, p, input, span {
+    margin: 0;
+}
+
+.header {
+    @include Flex(space-between, center);
+    width: 100%;
+    margin-bottom: 60px;
+    padding-top: 20px;
+
+    &-title {
+        font-size: 48px;
+    }
+
+    &-wallet {
+        @include Flex(flex-end, center);
+
+        &-img {
+            width: 10%;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        &-count {
+            font-size: 24px;
+        }
+    }
 }
 
 .main {
     @include Flex(flex-start, flex-start, column);
+
+    &-currency {
+        @include Flex(space-between);
+        width: 100%;
+    }
+
+    &-buy, &-sell {
+        @include Flex(center, center, column);
+        width: 50%;
+        font-size: 32px;
+
+        &-count {
+            padding-top: 20px;
+            font-size: 40px;
+        }
+    }
+
+    &-actions {
+        width: 100%;
+        margin-top: 80px;
+
+        &-title {
+            padding-bottom: 20px;
+            font-size: 36px;
+        }
+
+        &-item {
+            @include Flex(space-between);
+            margin: 10px 0;
+            padding: 20px;
+            border: 3px solid #fff;
+        }
+    }
 }

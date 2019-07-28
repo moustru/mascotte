@@ -11,3 +11,10 @@ $transition: all .3s ease;
     flex-direction: $flex-direction;
     flex-wrap: $flex-wrap;
 }
+
+// fonts
+
+@font-face {
+    font-family: 'PressStart2P-Regular';
+    src: url('fonts/PressStart2P-Regular.ttf') format('truetype');
+}
