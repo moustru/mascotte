@@ -11,16 +11,10 @@ const config = {
     wallet: 10000,
     buy: 0,
     sell: 0,
+    bSell: 0,
     bet: 0,
-    btc: 0
-}
-
-const stat = {
-    b1: 0,
-    b2: 0,
-    b3: 0,
-    d1: 0,
-    d2: 0
+    btc: 0,
+    transactions: []
 }
 
 const DOMCells = {
@@ -55,14 +49,13 @@ const postData = serialize({})
 
 window.onload = () => {
     init();
-    console.log(config);
-
+    console.log(config)
     setInterval(() => { 
-        action.getCurrencyInfo(DOMCells.buy, DOMCells.sell)
+        action.getCurrencyInfo(DOMCells.sell, DOMCells.buy)
         DOMCells.wallet.innerHTML = config.wallet;
         DOMCells.bet.innerHTML = config.bet;
         DOMCells.btc.innerHTML = config.btc;
-    }, 500);
+    }, 1000);
 }
 
 export default {
