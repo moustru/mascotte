@@ -11,7 +11,7 @@ html, body {
     height: 100%;
     width: 90%;
     margin: auto;
-    background-color: #23242b;
+    background-color: #10111d;
 }
 
 h1, h2, h3, h4, h5, h6, a, p, input, span {
@@ -48,6 +48,16 @@ h1, h2, h3, h4, h5, h6, a, p, input, span {
 .main {
     @include Flex(flex-start, flex-start, column);
 
+    &-bet, &-btc {
+        width: 100%;
+        padding-bottom: 20px;
+        font-size: 32px;
+    }
+
+    &-btc {
+        margin-bottom: 50px;
+    }
+
     &-currency {
         @include Flex(space-between);
         width: 100%;
@@ -78,6 +88,18 @@ h1, h2, h3, h4, h5, h6, a, p, input, span {
             margin: 10px 0;
             padding: 30px;
             border: 3px solid #fff;
+
+            .item {
+                &-type {
+                    font-size: 22px;
+                }
+            }
         }
+    }
+}
+
+.buy {
+    .item-count {
+        color: #da0c0c;
     }
 }
