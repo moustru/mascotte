@@ -1,7 +1,7 @@
 const Webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const path = require('path');
@@ -10,23 +10,20 @@ const isDev = argv.mode === 'development';
 const isProd = !isDev;
 
 module.exports = {
-    entry: {
-        index: './src/index.js'
-    },
-
+    entry: './src/app.js',
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'js/[name].js'
+        filename: 'js/app.js'
     },
 
     module: {
         rules: [
             {
-                test: /\.pug$/,
+                test: /\.html$/,
                 use: {
-                    loader: 'pug-loader',
+                    loader: 'file-loader',
                     options: {
-                        pretty: true
+                        name: '[name].[ext]'
                     }
                 }
             },
@@ -81,23 +78,34 @@ module.exports = {
             },
 
             {
-                test: /\.ttf|woff|woff2$/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: 'fonts/[name].[ext]'
+                test: /\.(gif|png|jpe?g|svg|ico)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'img/[name].[ext]'
+                        }        
+                    },
+
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 70
+                            }
+                        }
                     }
-                }
+                ]
             },
 
             {
-                test: /\.jpg|png|svg|gif$/,
-                use: 
-                {
+                test: /\.(ttf|woff|woff2)$/,
+                use: {
                     loader: 'file-loader',
                     options: {
-                        name: 'img/[name].[ext]'
-                    },
+                        name: 'fonts/[name].[ext]',
+                    }
                 }
             }
         ]
@@ -105,16 +113,12 @@ module.exports = {
 
     plugins: [
         new Webpack.NoEmitOnErrorsPlugin(),
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            chunks: ['index'],
-            template: './src/index.pug'
-        }),
         new MiniCssExtractPlugin({
-            filename: 'css/[name].css',
+            filename: 'css/app.css',
             chunkFilename: 'css/[id].css' 
         }),
-        new Webpack.HotModuleReplacementPlugin()
+        new Webpack.HotModuleReplacementPlugin(),
+        new VueLoaderPlugin()
     ],
 
     optimization: isProd ? {

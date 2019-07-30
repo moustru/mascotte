@@ -19,10 +19,13 @@ h1, h2, h3, h4, h5, h6, a, p, input, span {
 }
 
 .header {
+    position: sticky;
+    top: 0;
     @include Flex(space-between, center);
     width: 100%;
     margin-bottom: 60px;
     padding-top: 20px;
+    background-color: #10111d;
 
     &-title {
         font-size: 48px;
@@ -74,9 +77,14 @@ h1, h2, h3, h4, h5, h6, a, p, input, span {
         }
     }
 
-    &-actions {
+    &-info {
+        @include Flex(space-between);
         width: 100%;
         margin-top: 80px;
+    }
+
+    &-actions {
+        width: 65%;
 
         &-title {
             padding-bottom: 20px;
@@ -85,6 +93,7 @@ h1, h2, h3, h4, h5, h6, a, p, input, span {
 
         &-item {
             @include Flex(space-between);
+            width: 100%;
             margin: 10px 0;
             padding: 30px;
             border: 3px solid #fff;
@@ -97,17 +106,30 @@ h1, h2, h3, h4, h5, h6, a, p, input, span {
         }
     }
 
-    &-begin {
-        &-count {
-            display: block;
-            margin-top: 20px;
-            font-size: 24px;
-        }
-    }
-}
+    &-transactions {
+        width: 33%;
 
-.buy {
-    .item-count {
-        color: #da0c0c;
+        &-title {
+            padding-bottom: 20px;
+            font-size: 36px;
+        }
+
+        &-item {
+            @include Flex(flex-start, flex-start, column);
+            margin: 10px 0;
+            padding: 20px;
+            border: 3px solid #fff;
+
+            & > * {
+                display: block;
+                width: 100%;
+            }
+
+            .item {
+                &-btc {
+                    padding-bottom: 10px;
+                }
+            }
+        }
     }
 }
