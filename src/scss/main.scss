@@ -66,6 +66,16 @@ h1, h2, h3, h4, h5, h6, a, p, input, span {
         width: 100%;
     }
 
+    &-stats {
+        margin: 50px 0;
+
+        &-count {
+            display: block;
+            padding-bottom: 20px;
+            font-size: 22px;
+        }
+    }
+
     &-buy, &-sell {
         @include Flex(center, center, column);
         width: 50%;
@@ -80,7 +90,6 @@ h1, h2, h3, h4, h5, h6, a, p, input, span {
     &-info {
         @include Flex(space-between);
         width: 100%;
-        margin-top: 80px;
     }
 
     &-actions {
@@ -92,7 +101,7 @@ h1, h2, h3, h4, h5, h6, a, p, input, span {
         }
 
         &-item {
-            @include Flex(space-between);
+            @include Flex(space-between, center);
             width: 100%;
             margin: 10px 0;
             padding: 30px;

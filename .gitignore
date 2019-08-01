@@ -32,6 +32,4 @@ nbproject
 .tmp
 _tmp
 node_modules/
-.env
 dist/
-src/env.js
